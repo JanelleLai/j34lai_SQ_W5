@@ -18,7 +18,7 @@ const SPRITE = {
   frameHeight: 499.25, // height of one frame (600px / 4 rows)
   numFrames: 4, // frames per row
   animSpeed: 20, // draw() frames per sprite frame (higher = slower)
-  scale: 0.5, // draw at half original size
+  scale: 0.1, // draw at half original size
 
   // Row index for each direction
   // Change these if your sheet has a different row order
