@@ -51,6 +51,13 @@ const COIN = {
   numFrames: 8,
   animSpeed: 6,
   scale: 0.5,
+
+  offsets: {
+    down: { x: 0, y: 0 },
+    up: { x: 0, y: 0 },
+    right: { x: 0, y: 10 },
+    left: { x: 0, y: 20 },
+  },
 };
 
 // ------------------------------------------------------------
