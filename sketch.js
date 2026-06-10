@@ -48,7 +48,7 @@ const SPRITE = {
 const COIN = {
   frameWidth: 140,
   frameHeight: 140,
-  numFrames: 8,
+  numFrames: 6,
   animSpeed: 6,
   scale: 0.5,
 };
