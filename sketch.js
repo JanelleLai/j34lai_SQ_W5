@@ -51,13 +51,6 @@ const COIN = {
   numFrames: 8,
   animSpeed: 6,
   scale: 0.5,
-
-  offsets: {
-    down: { x: 0, y: 0 },
-    up: { x: 0, y: 0 },
-    right: { x: 0, y: 10 },
-    left: { x: 0, y: 20 },
-  },
 };
 
 // ------------------------------------------------------------
@@ -145,6 +138,7 @@ let coinSheet;
 function preload() {
   characterSheet = loadImage("assets/images/walking.png");
   coinSheet = loadImage("assets/images/coin_gold.png");
+  backgroundpic = loadImage("assets/images/background2.png");
 }
 
 // ============================================================
@@ -192,7 +186,7 @@ function setup() {
 // appears on top of it.
 // ============================================================
 function draw() {
-  background(20);
+  background(backgroundpic);
 
   drawMaze();
   updateCoins();
