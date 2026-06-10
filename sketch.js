@@ -50,7 +50,7 @@ const COIN = {
   frameHeight: 140,
   numFrames: 8,
   animSpeed: 6,
-  scale: 1.5,
+  scale: 0.5,
 };
 
 // ------------------------------------------------------------
