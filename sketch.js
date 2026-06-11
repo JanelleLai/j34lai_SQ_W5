@@ -46,11 +46,11 @@ const SPRITE = {
 // Same structure as Example 2. See that file for full notes.
 // ------------------------------------------------------------
 const COIN = {
-  frameWidth: 85.8,
-  frameHeight: 280,
-  numFrames: 10,
-  animSpeed: 7,
-  scale: 0.3,
+  frameWidth: 89.2,
+  frameHeight: 100,
+  numFrames: 7,
+  animSpeed: 6,
+  scale: 0.4,
 };
 
 // ------------------------------------------------------------
@@ -129,6 +129,7 @@ let gameWon = false;
 // Images
 let characterSheet;
 let coinSheet;
+let backgroundpic;
 
 // ============================================================
 // preload()
@@ -138,7 +139,17 @@ let coinSheet;
 function preload() {
   characterSheet = loadImage("assets/images/walking.png");
   coinSheet = loadImage("assets/images/coin_gold.png");
-  backgroundpic = loadImage("assets/images/background2.png");
+
+  backgroundpic = loadImage(
+    "assets/images/background2.png",
+    () =>
+      console.log(
+        "background loaded:",
+        backgroundpic.width,
+        backgroundpic.height
+      ),
+    (err) => console.error("background load failed:", err)
+  );
 }
 
 // ============================================================
@@ -186,7 +197,11 @@ function setup() {
 // appears on top of it.
 // ============================================================
 function draw() {
-  background(backgroundpic);
+  if (backgroundpic) {
+    image(backgroundpic, width / 2, height / 2, width, height);
+  } else {
+    background(30); // fallback color while image isn't loaded
+  }
 
   drawMaze();
   updateCoins();
@@ -220,19 +235,22 @@ function drawMaze() {
     for (let col = 0; col < MAZE[row].length; col++) {
       let tile = MAZE[row][col];
 
-      // Exit tile changes colour when all coins are collected
-      if (tile === 4) {
-        if (coinsCollected === coins.length) {
-          fill(30, 200, 120); // bright green — exit is open
-        } else {
-          fill(60, 100, 80); // dim green — exit is locked
-        }
-      } else {
-        let c = TILE_COLORS[tile];
+      // Only draw walls and the exit — leave floor/coins/start transparent
+      if (tile === 1) {
+        // wall — opaque
+        let c = TILE_COLORS[1];
         fill(c[0], c[1], c[2]);
+        rect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+      } else if (tile === 4) {
+        // exit tile (changes when all coins are collected)
+        if (coinsCollected === coins.length) {
+          fill(30, 200, 120, 200); // bright green — exit open
+        } else {
+          fill(60, 100, 80, 200); // dim green — exit locked
+        }
+        rect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
       }
-
-      rect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+      // tiles 0,2,3: do not draw (transparent), so background shows through
     }
   }
 }
@@ -505,7 +523,7 @@ function drawHUD() {
   // Show exit hint once all coins are collected
   if (coinsCollected === coins.length) {
     fill(30, 200, 120);
-    text("Exit is open! Find the green tile.", 10, 40);
+    text("Exit is open! Find the green tunnel.", 10, 40);
   }
 }
 
@@ -523,9 +541,9 @@ function drawWinScreen() {
   fill(255);
   textAlign(CENTER);
   textSize(48);
-  text("You Escaped!", width / 2, height / 2 - 20);
+  text("You arrived the tunnel!", width / 2, height / 2 - 20);
 
   textSize(16);
   fill(180);
-  text("All coins collected", width / 2, height / 2 + 20);
+  text("Level up", width / 2, height / 2 + 20);
 }
