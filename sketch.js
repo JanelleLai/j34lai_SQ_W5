@@ -46,11 +46,11 @@ const SPRITE = {
 // Same structure as Example 2. See that file for full notes.
 // ------------------------------------------------------------
 const COIN = {
-  frameWidth: 102,
-  frameHeight: 120.5,
-  numFrames: 6,
+  frameWidth: 85.8,
+  frameHeight: 280,
+  numFrames: 10,
   animSpeed: 7,
-  scale: 0.4,
+  scale: 0.3,
 };
 
 // ------------------------------------------------------------
