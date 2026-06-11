@@ -1,21 +1,4 @@
-# Week 5 Example 1 — Sprite Sheet Animation
-
-## What This Example Demonstrates
-
-> **Note for students:** This section is included in example files only to help you study. Do not include it in your Side Quest submissions.
-
-This example introduces sprite sheet animation by loading a single image file and drawing one frame at a time to create a walking character that faces the correct direction.
-
-- **Sprite sheet** — a single image containing all animation frames arranged in a grid; one row per direction, one column per frame
-- **`preload()`** — loads the sprite sheet image before `setup()` runs so it is ready to use immediately
-- **`imageMode(CENTER)`** — makes `image()` draw from the centre point rather than the top-left corner; useful for positioning characters
-- **`image()` with source rectangle** — the 9-argument version of `image()` lets you specify which part of a larger image to draw; used here to extract one frame from the sheet
-- **Frame selection** — multiplying `currentFrame` by `frameWidth` slides the source window along the row to select the correct frame
-- **Row selection** — multiplying the row index by `frameHeight` moves the source window to the correct direction row
-- **`frameTimer`** — counts up every `draw()` call; when it reaches `animSpeed`, the frame advances; this controls how fast the animation plays independently of the frame rate
-- **`isMoving` flag** — animation only plays when the player is moving; resets to frame 0 when idle so the character stands still
-- **`SPRITE` config object** — groups all sprite settings in one place so they are easy to adjust without hunting through the code
-- **`offsets`** — fine-tune the source position per direction to correct misaligned frames on a sprite sheet
+# Week 5 — Sprite Sheet Animation
 
 ## Setup and Interaction Instructions
 
@@ -34,10 +17,16 @@ The console will show any errors in your sketch.
 
 ## Assets
 
-| File | Source |
-|------|--------|
-| `assets/images/walking.png` | Slynyrd, Pixelblog 22: Top Down Character Sprites |
+| File                             | Source                            |
+| -------------------------------- | --------------------------------- |
+| `assets/images/coin_gold.png`[1] | Freepik, Colorful game icons set. |
+| `assets/images/walking.png`[2]   | Openclipart, isaiah658            |
+| `assets/images/background2.png`  | Created by me                     |
 
 ## References
 
-Slynyrd. 2019. *Pixelblog 22: Top Down Character Sprites*. Slynyrd Blog. Retrieved May 1, 2026, from https://www.slynyrd.com/blog/2019/10/21/pixelblog-22-top-down-character-sprites
+[1] Freepik. 2026. Colorful game icons set. Vector Asset. Freepik. Retrieved June 10, 2026 from https://www.freepik.com/free-vector/colorful-game-icons-set_9580818.htm
+
+[2] isaiah658. 2016. Retro Character Sprite Sheet. Clip Art Asset. Openclipart. Retrieved June 10, 2026 from https://openclipart.org/detail/248259/retro-character-sprite-sheet
+
+[3] Shigeru Miyamoto and Takashi Tezuka. 1985. Super Mario Bros. (Video Game). Nintendo. Nintendo Entertainment System.
